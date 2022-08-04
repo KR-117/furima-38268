@@ -12,7 +12,6 @@ class Item < ApplicationRecord
   belongs_to :shipment_date
 
   with_options presence: true do
-    validates :user_id
     validates :image
     validates :name
     validates :text
@@ -21,7 +20,7 @@ class Item < ApplicationRecord
     validates :shipping_fee_id
     validates :prefecture_id
     validates :shipment_date_id
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
     validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Only half-width number' }
   end
 
