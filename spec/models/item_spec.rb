@@ -2,6 +2,7 @@ require 'rails_helper'
 RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.create(:item)
+    sleep 0.1
   end
 
   describe '商品の出品登録' do
@@ -65,7 +66,7 @@ RSpec.describe Item, type: :model do
       it "category_idが「---」では出品できない" do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank")
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
       it "status_idが空では出品できない" do
         @item.status_id = nil
@@ -75,7 +76,7 @@ RSpec.describe Item, type: :model do
       it "status_idが「---」では出品できない" do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status can't be blank")
+        expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
       it "shipping_fee_idが空では出品できない" do
         @item.shipping_fee_id = nil
@@ -85,7 +86,7 @@ RSpec.describe Item, type: :model do
       it "shipping_fee_idが「---」では出品できない" do
         @item.shipping_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping fee must be other than 1")
       end
       it "prefecture_idが空では出品できない" do
         @item.prefecture_id = nil
@@ -95,7 +96,7 @@ RSpec.describe Item, type: :model do
       it "prefecture_idが「---」では出品できない" do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
       it "shipment_date_idが空では出品できない" do
         @item.shipment_date_id = nil
@@ -105,7 +106,7 @@ RSpec.describe Item, type: :model do
       it "shipment_date_idが「---」では出品できない" do
         @item.shipment_date_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipment date can't be blank")
+        expect(@item.errors.full_messages).to include("Shipment date must be other than 1")
       end
       it "priceが空では出品できない" do
         @item.price = nil
