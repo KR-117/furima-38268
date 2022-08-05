@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   before_action :find_item, only: [:show, :edit, :update, :destroy]
 
-  before_action :nicht_artikel_benutzer, only: [:edit, :destroy]
+  before_action :redirect, only: [:edit, :destroy]
 
   def index
     @items = Item.includes(:user).order("created_at DESC")
@@ -53,9 +53,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def nicht_artikel_benutzer
+  def redirect
     unless current_user.id == @item.user.id
-      redirect_to
+      redirect_to root_path
     end
   end
 end
