@@ -132,9 +132,9 @@
           <div class='item-img-content'>
             <%= image_tag item.image.variant(resize: '300x300'), class: "item-img" if item.image.attached? %>
 
-            <% if @items.present? %>
+            <% if item.purchase != nil %>
               <div class='sold-out'>
-          <%#   <span>Sold Out!!</span>  %>
+                <span>Sold Out!!</span>
               </div>
             <% end %>
 
