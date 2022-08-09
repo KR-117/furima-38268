@@ -8,5 +8,6 @@ FactoryBot.define do
     house_number { Faker::Address.street_address }
     building_name { "建物名" }
     phone_number { Faker::Number.decimal_part(digits: 11) }
+    token {"tok_abcdefghijk00000000000000000"}
   end
 end
